@@ -1,11 +1,12 @@
 FROM python:alpine3.6
 
-# 安装系统依赖以及 chromium 和 chromedriver
+# 安装系统依赖、chromium、chromedriver、Xvfb和cron服务（cronie）
 RUN apk add --no-cache \
     chromium \
     chromium-chromedriver \
-    # alpine 下部分包可能需要根据实际情况安装
     bash \
+    xorg-server \
+    cronie \
     && rm -rf /var/cache/apk/*
 
 # 安装 Selenium（如果其他依赖已经在 requirements.txt 中可不重复安装）
@@ -31,6 +32,6 @@ ENV CRON_SCHEDULE="30 0,12 * * *"
 ENV CHROME_BIN=/usr/bin/chromium-browser
 ENV DISPLAY=:99
 
-# 设置入口点
+# 设置入口点（赋予执行权限）
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
