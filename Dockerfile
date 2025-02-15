@@ -6,7 +6,6 @@ RUN apk add --no-cache \
     chromium-chromedriver \
     bash \
     xorg-server \
-    cronie \
     && rm -rf /var/cache/apk/*
 
 # 安装 Selenium（如果其他依赖已经在 requirements.txt 中可不重复安装）
