@@ -13,8 +13,5 @@ fi
 # 确保 /etc/crontabs/root 权限为755
 chmod 755 /etc/crontabs/root
 
-# 启动X虚拟帧缓冲区
-Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &
-
 # 启动cron服务并在前台运行（-f）以保持容器启动，-l 设置日志级别
 crond -l 8 -f
