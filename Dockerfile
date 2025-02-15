@@ -48,5 +48,16 @@ ENV PASSWORD=2HQ4Y%hf
 ENV HEADLESS=true
 ENV SCREENSHOT_DIR=/app/screenshots
 
+# 在安装系统依赖后添加清理步骤
+RUN apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/apt/lists/*
+
+# 添加非root用户
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN chown -R appuser:appuser /app
+USER appuser
+
+
 # 设置容器启动命令
 CMD ["python", "src/main.py"]
