@@ -1,13 +1,14 @@
 #!/bin/sh
+# filepath: /c:/Users/Pecca/OneDrive/data/Code/modemn-reboot/entrypoint.sh
 # 临时文件用于存放 cron 任务
 CRON_FILE="/tmp/cronjob"
 
 if [ -n "$CRON_SCHEDULE" ]; then
   echo "Using custom cron schedule: $CRON_SCHEDULE"
-  echo "$CRON_SCHEDULE /usr/local/bin/python /app/src/cron.py >> /app/logs/cron.log 2>&1" > "$CRON_FILE"
+  echo "$CRON_SCHEDULE /app/main.sh" > "$CRON_FILE"
 else
   echo "Using default cron schedule: 30 0,12 * * *"
-  echo "30 0,12 * * * /usr/local/bin/python /app/src/cron.py >> /app/logs/cron.log 2>&1" > "$CRON_FILE"
+  echo "30 0,12 * * * /app/main.sh" > "$CRON_FILE"
 fi
 
 # 加载 cron 任务

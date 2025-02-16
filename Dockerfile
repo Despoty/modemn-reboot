@@ -45,5 +45,6 @@ ENV HEADLESS=true
 ENV TZ=Asia/Shanghai
 
 # 设置入口点（赋予执行权限）
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh \
+    && chmod +x /app/main.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
