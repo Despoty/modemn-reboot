@@ -2,7 +2,7 @@
 FROM python:3.8.8-alpine3.13 AS build
 RUN apk update && \
     apk add --no-cache gcc libffi-dev musl-dev && \
-    pip install -U pip &&\
+    pip install -U pip && \
     pip install --timeout 30 --user --no-cache-dir --no-warn-script-location selenium
 
 
@@ -37,16 +37,12 @@ COPY entrypoint.sh /app/
 RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
 
 # 创建日志和截图目录
-RUN mkdir -p /app/{logs,screenshots} \
-    && chmod 777 /app/{logs,screenshots}
+RUN mkdir -p /app/logs /app/screenshots \
+    && chmod 777 /app/logs /app/screenshots
 
 # 设置环境变量
 ENV SCREENSHOT_DIR=/app/screenshots
 ENV HEADLESS=true
-ENV CRON_SCHEDULE="30 0,12 * * *"
-# alpine 使用 chromium 可设置环境变量 CHROME_BIN
-ENV CHROME_BIN=/usr/bin/chromium-browser
-ENV DISPLAY=:99
 
 # 设置入口点（赋予执行权限）
 RUN chmod +x /app/entrypoint.sh
