@@ -37,7 +37,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # 创建日志和截图目录
 RUN mkdir -p /app/logs /app/screenshots \
-    && chmod 777 /app/logs /app/screenshots
+    && chmod 777 /app/logs /app/screenshots \
     && touch /app/logs/cron.log
 
 # 设置环境变量
