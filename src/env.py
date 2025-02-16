@@ -7,6 +7,6 @@ CONFIG = {
     "USERNAME": os.getenv("USER", "user"),
     "PASSWORD": os.getenv("PASSWORD", "2HQ4Y%hf"),
     "HEADLESS": os.getenv("HEADLESS", "true").lower() == "true",
-    "EDGE_DRIVER_PATH": os.getenv("EDGE_DRIVER_PATH", "msedgedriver.exe"),
+    "EDGE_DRIVER_PATH": os.getenv("EDGE_DRIVER_PATH", "src\msedgedriver.exe"),
     "SCREENSHOT_DIR": os.getenv("SCREENSHOT_DIR", "/app/screenshots")
 } 
