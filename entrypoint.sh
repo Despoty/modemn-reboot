@@ -4,10 +4,10 @@ CRON_FILE="/tmp/cronjob"
 
 if [ -n "$CRON_SCHEDULE" ]; then
   echo "Using custom cron schedule: $CRON_SCHEDULE"
-  echo "$CRON_SCHEDULE python /app/src/main.py" > "$CRON_FILE"
+  echo "$CRON_SCHEDULE /usr/local/bin/python /app/src/main.py" > "$CRON_FILE"
 else
   echo "Using default cron schedule: 30 0,12 * * *"
-  echo "30 0,12 * * * python /app/src/main.py" > "$CRON_FILE"
+  echo "30 0,12 * * * /usr/local/bin/python /app/src/main.py" > "$CRON_FILE"
 fi
 
 # 安装 cron 任务
