@@ -29,7 +29,7 @@ def init_edge():
 def init_chrome():
     """初始化浏览器驱动,适用于Linux系统"""
     try:
-        chrome_options = webdriver.Options()
+        chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")

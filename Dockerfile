@@ -26,15 +26,13 @@ RUN apk update \
     xvfb-run \
     && rm -rf /var/cache/apk/*
 
-RUN pip install --no-cache-dir --break-system-packages selenium
-
 WORKDIR /app
 COPY requirements.txt .
 COPY src/ ./src/
 COPY entrypoint.sh /app/
 
 # 安装Python依赖
-RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 创建日志和截图目录
 RUN mkdir -p /app/logs /app/screenshots \
