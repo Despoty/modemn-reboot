@@ -17,4 +17,4 @@ crontab "$CRON_FILE"
 crond -l 8 &
  
 # 防止容器退出，阻塞方式等待
-tail -f /dev/null
+tail -F /app/logs/main.log
