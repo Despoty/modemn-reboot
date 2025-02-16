@@ -31,6 +31,7 @@ WORKDIR /app
 COPY requirements.txt .
 COPY src/ ./src/
 COPY entrypoint.sh /app/
+COPY main.sh /app/
 
 # 安装Python依赖
 RUN pip install --no-cache-dir -r requirements.txt
