@@ -24,6 +24,7 @@ RUN apk update \
     curl \
     unzip \
     xvfb-run \
+    tzdata \
     && rm -rf /var/cache/apk/*
 
 WORKDIR /app
@@ -41,6 +42,7 @@ RUN mkdir -p /app/logs /app/screenshots \
 # 设置环境变量
 ENV SCREENSHOT_DIR=/app/screenshots
 ENV HEADLESS=true
+ENV TZ=Asia/Shanghai
 
 # 设置入口点（赋予执行权限）
 RUN chmod +x /app/entrypoint.sh
